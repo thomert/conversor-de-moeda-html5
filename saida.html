@@ -24,6 +24,8 @@
 				var oJSON = JSON.parse(sResponseBody);
 				var sReais = oJSON.rates.BRL;
 				console.log(sReais);
+				
+				document.querySelector("#valor_destino").value = sReais;
 			}
 			
 			function chamaAPI(){
@@ -32,10 +34,12 @@
 				oRequest.addEventListener("load", callback);
 				oRequest.open("GET", sURL);
 				oRequest.send();
+			
 			// AddEventListener é chamado no send() e é uma chamada assíncrona
 				console.log("Passou...");
 			}
 			
+			// Quando a tela termina de carregar, chama isso aqui
 			window.onload = function(){
 				chamaAPI();
 			}
@@ -49,7 +53,7 @@
          <input type="text" value="BRL" disabled>
          <br />
          <label>Valor de destino</label>
-         <input type="number" disabled >
+         <input id="valor_destino" type="number" disabled >
          <button type="button" onclick="voltar()">
 				Voltar
 		 </button>
